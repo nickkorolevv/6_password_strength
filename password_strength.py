@@ -3,16 +3,16 @@ import getpass
 
 def passwords_mark(password):
     mark = 0
-    if len(password)>=8:
-        mark+=2
+    if len(password) >= 8:
+        mark += 2
     if any(word.isupper() for word in password):
-        mark+=2
+        mark += 2
     if any(word.islower() for word in password):
-        mark+=2
+        mark += 2
     if any(word.isdigit() for word in password):
-        mark+=2
-    if any(["!","@","#","$","%","^","&","*","(",")"] for i in password):
-        mark+=2
+        mark += 2
+    if any(["!", "@", "#", "$", "%", "^", "&", "*"] for word in password):
+        mark += 2
     return mark
 
 
