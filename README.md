@@ -1,7 +1,31 @@
-# Password Strength Calculator
 
-[TODO. There will be project description]
 
-# Project Goals
+# Сложность пароля 
+Данный скрипт, просит ввести пароль и выдаёт ему оценку от 1 до 10.
+ 1 – очень слабый пароль, 10 – очень крутой.
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+# Описание
+Для работы скрипта требуется модуль getpass
+Для того, чтобы импортировать данный модуль требуется написать:
+```python
+import getpass
+```
+
+# Как запустить
+Для запуска скрипта требуется
+```bash 
+python password_strength.py
+```
+
+ 
+## Пример вывода скрипта
+```bash
+Введите пароль:
+Сложность пароля:  10
+```
+
+
+# Цели проекта
+
+Код создан в учебных целях. В рамках учебного курса по веб-разработке - [DEVMAN.org](https://devman.org)
+
