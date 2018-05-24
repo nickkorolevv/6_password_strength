@@ -2,9 +2,7 @@ import getpass
 from string import punctuation
 
 
-def get_passwords_rating(password):
-    password_rating = 0
-    min_password_len = 8
+def get_passwords_rating(password, password_rating, min_password_len):
     if any(char in punctuation for char in password):
         password_rating += 1
     if len(password) >= min_password_len:
@@ -30,6 +28,8 @@ def get_password():
 
 
 if __name__ == "__main__":
+    password_rating = 0
+    min_password_len = 8
     password = get_password()
-    password_rating = get_passwords_rating(password)
+    password_rating = get_passwords_rating(password, password_rating, min_password_len)
     print_pass_strength("Сложность пароля: ", password_rating)
