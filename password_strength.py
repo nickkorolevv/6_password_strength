@@ -2,7 +2,7 @@ import getpass
 import string
 
 
-def get_pass_rating(password):
+def get_pass_rate(password):
     password_rating = 0
     min_password_len = 8
     for char in password:
@@ -23,7 +23,7 @@ def get_pass_rating(password):
     return password_rating
 
 
-def print_pass_strength(password_strength, password_rating):
+def print_strength(password_strength, password_rating):
     print(password_strength, password_rating)
 
 
@@ -34,5 +34,5 @@ def get_password():
 
 if __name__ == "__main__":
     password = get_password()
-    password_rating = get_pass_rating(password)
-    print_pass_strength("Сложность пароля: ", password_rating)
+    password_rating = get_pass_rate(password)
+    print_strength("Сложность пароля: ", password_rating)
