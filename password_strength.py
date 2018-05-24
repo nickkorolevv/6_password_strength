@@ -1,10 +1,12 @@
 import getpass
-import string
+from string import punctuation
 
 
-def get_passwords_rating(password, pass_rating):
-    password_rating = pass_rating
+def get_passwords_rating(password):
+    password_rating = 0
     min_password_len = 8
+    if any(char in punctuation for char in password):
+        password_rating += 1
     if len(password) >= min_password_len:
         password_rating += 2
     if any(char.isupper() for char in password):
@@ -15,16 +17,6 @@ def get_passwords_rating(password, pass_rating):
         password_rating += 2
     if password.lower() != "password":
         password_rating += 1
-    return password_rating
-
-
-def check_punctuation(password):
-    password_rating = 0
-    for char in password:
-        if char in list(string.punctuation):
-            password_rating += 1
-            if password_rating == 1:
-                break
     return password_rating
 
 
@@ -39,6 +31,5 @@ def get_password():
 
 if __name__ == "__main__":
     password = get_password()
-    pass_rating = check_punctuation(password)
-    password_rating = get_passwords_rating(password, pass_rating)
+    password_rating = get_passwords_rating(password)
     print_pass_strength("Сложность пароля: ", password_rating)
