@@ -1,23 +1,30 @@
 import getpass
+import string
 
 
-def passwords_mark(password):
-    mark = 0
-    if len(password) >= 8:
-        mark += 2
-    if any(word.isupper() for word in password):
-        mark += 2
-    if any(word.islower() for word in password):
-        mark += 2
-    if any(word.isdigit() for word in password):
-        mark += 2
-    if any(["!", "@", "#", "$", "%", "^", "&", "*"] for word in password):
-        mark += 2
-    return mark
+def get_passwords_rating(password):
+    password_rating = 0
+    min_password_len = 8
+    for char in password:
+        if char in list(string.punctuation):
+            password_rating += 1
+            if password_rating == 1:
+                break
+    if len(password) >= min_password_len:
+        password_rating += 2
+    if any(char.isupper() for char in password):
+        password_rating += 2
+    if any(char.islower() for char in password):
+        password_rating += 2
+    if any(char.isdigit() for char in password):
+        password_rating += 2
+    if password.lower() != "password":
+        password_rating += 1
+    return password_rating
 
 
-def print_mark(password_strength, password_mark):
-    print(password_strength, password_mark)
+def print_pass_strength(password_strength, password_rating):
+    print(password_strength, password_rating)
 
 
 def get_password():
@@ -27,5 +34,5 @@ def get_password():
 
 if __name__ == "__main__":
     password = get_password()
-    password_mark = passwords_mark(password)
-    print_mark("Сложность пароля: ", password_mark)
+    password_rating = get_passwords_rating(password)
+    print_pass_strength("Сложность пароля: ", password_rating)
