@@ -2,14 +2,9 @@ import getpass
 import string
 
 
-def get_pass_rate(password):
-    password_rating = 0
+def get_passwords_rating(password, pass_rating):
+    password_rating = pass_rating
     min_password_len = 8
-    for char in password:
-        if char in list(string.punctuation):
-            password_rating += 1
-            if password_rating == 1:
-                break
     if len(password) >= min_password_len:
         password_rating += 2
     if any(char.isupper() for char in password):
@@ -23,7 +18,17 @@ def get_pass_rate(password):
     return password_rating
 
 
-def print_strength(password_strength, password_rating):
+def check_punctuation(password):
+    password_rating = 0
+    for char in password:
+        if char in list(string.punctuation):
+            password_rating += 1
+            if password_rating == 1:
+                break
+    return password_rating
+
+
+def print_pass_strength(password_strength, password_rating):
     print(password_strength, password_rating)
 
 
@@ -34,5 +39,6 @@ def get_password():
 
 if __name__ == "__main__":
     password = get_password()
-    password_rating = get_pass_rate(password)
-    print_strength("Сложность пароля: ", password_rating)
+    pass_rating = check_punctuation(password)
+    password_rating = get_passwords_rating(password, pass_rating)
+    print_pass_strength("Сложность пароля: ", password_rating)
