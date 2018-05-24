@@ -13,8 +13,6 @@ def get_passwords_rating(password, password_rating, min_password_len):
         password_rating += 2
     if any(char.isdigit() for char in password):
         password_rating += 2
-    if password.lower() != "password":
-        password_rating += 1
     return password_rating
 
 
